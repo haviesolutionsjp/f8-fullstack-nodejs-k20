@@ -137,7 +137,7 @@ input:required {
 a[href^="https://"] {
   color: #2563eb;
 }
-a[href$=".pdf"] {
+.resource-list a[href$=".pdf"] {
   color: #ea580c;
 }
 [class*="btn"] {
