@@ -1,18 +1,4 @@
-<<<<<<< HEAD
 
-.box-3 ~ .box {
-    color: green;
-}
-li:nth-child(even) {
-    color: red;
-}
-li:nth-child(5) {
-    color: violet;
-}
-ul li {
-    background-color: gray;
-}
-=======
 /* Bài 1: Combinators */
 .main-nav a {
   color: #1d4ed8;
@@ -163,4 +149,4 @@ a[href$=".pdf"] {
 tr[data-priority="high"] {
   background: #fee2e2;
 }
->>>>>>> origin/main
+
