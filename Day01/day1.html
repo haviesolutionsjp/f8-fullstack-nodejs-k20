@@ -61,9 +61,9 @@
     <li><strong>Import Attributes</strong> - <code>import data from "./data.json" with { type: "json" }</code></li>
     <li><strong>Float16Array</strong> - typed array 16-bit cho memory-sensitive workloads</li>
   </ul>
- 
 
-  <p><img src="/Day1/Img/hinh1.png" alt="Hình 1" width="700px" height="420px" /></p>
+
+  <p><img src="/Day01/Img/hinh1.png" alt="Hình 1" width="700px" height="420px" /></p>
   <em>ES2025 tập trung vào iterator, set, và async - không phải pipeline operator như nhiều bài viết nhầm</em></p>
   <p>Node.js 22+ và các browser Chrome/Firefox/Safari release sau tháng 6/2025 đã support native. Không cần polyfill cho
     production nếu bạn target môi trường đủ mới.</p>
@@ -80,7 +80,7 @@
     .filter(item => item.active)
     .map(item => item.name)
     .slice(0, 100);
-  
+
   // ES2025 - lazy evaluation, chỉ xử lý đến khi đủ 100 item
   const result = Iterator.from(apiData)
     .filter(item => item.active)
@@ -90,19 +90,19 @@
   </code></pre>
   <p>Khác biệt quan trọng: <code>Iterator.from()</code> <strong>lazy</strong> - với mảng 10.000 item nhưng chỉ cần 100
     kết quả đầu, nó không xử lý 9.900 item còn lại. Lodash chain cũng làm được điều này, nhưng giờ là native.</p>
-  <p><img src="/Day1/Img/hinh2.png" alt="Hình 2" width="700px" height="420px"></p></br />
+  <p><img src="/Day01/Img/hinh2.png" alt="Hình 2" width="700px" height="420px"></p></br />
   <p><em>Lazy evaluation: chỉ xử lý đúng số item cần thiết, tiết kiệm CPU và memory đáng kể</em></p>
   <p><strong>Set Methods</strong> thì cực kỳ hữu ích khi bạn làm việc với tập hợp dữ liệu cần các phép toán tập hợp như
     union, intersection, difference. Trước đây phải tự viết hoặc dùng thư viện ngoài:</p>
   <pre><code>const userRoles = new Set(['admin', 'editor']);
   const requiredRoles = new Set(['editor', 'viewer']);
-  
+
   // Kiểm tra overlap
   const hasAccess = !userRoles.intersection(requiredRoles).size === 0;
-  
+
   // Chat app: merge messages từ 2 nguồn, không trùng
   const allMessages = socketMessages.union(cachedMessages);
-  
+
   // Diff để biết message mới
   const newMessages = socketMessages.difference(cachedMessages);
   </code></pre>
@@ -126,25 +126,25 @@ async function loadProfile(id) {
   <pre><code>async function* streamDashboardData(endpoint) {
   const response = await Promise.try(() => fetch(endpoint));
   const reader = response.body.getReader();
-  
+
   while (true) {
   const { done, value } = await reader.read();
   if (done) break;
-  
+
   // Dùng Iterator Helpers để transform ngay trên stream
   yield* Iterator.from([value])
   .map(chunk => JSON.parse(new TextDecoder().decode(chunk)))
   .filter(data => data.type === 'update');
   }
   }
-  
+
   // Consume trong component
   for await (const update of streamDashboardData('/api/stream')) {
   updateUI(update);
   }
   </code></pre>
   </p>
-  <p><img src="/Day1/Img/hinh3.png" alt="Hình 3" width="700px" height="420px"></p>
+  <p><img src="/Day01/Img/hinh3.png" alt="Hình 3" width="700px" height="420px"></p>
   <p><em>Promise.try + async generator = xử lý stream data không bị miss error ở bất kỳ điểm nào</em></p>
   <p><strong>Top-level await</strong> (ES2022 nhưng hay dùng chung với ES2025 patterns) cũng clean hơn khi kết hợp Set
     ops:</p>
@@ -152,7 +152,7 @@ async function loadProfile(id) {
   <pre><code>// module.js - init một lần, share across module
   const initialPermissions = new Set(await fetchUserPermissions());
   const cachedPermissions = new Set(JSON.parse(localStorage.getItem('perms') ?? '[]'));
-  
+
   // Merge, loại bỏ duplicate
   export const permissions = initialPermissions.union(cachedPermissions);
   </code></pre>
@@ -170,16 +170,16 @@ async function loadProfile(id) {
   <p>
   <pre><code>import { fromEvent, Subject } from 'rxjs';
         import { debounceTime, scan, filter } from 'rxjs/operators';
-        
+
         const socket = new WebSocket('wss://api.example.com/live');
-        
+
         // Stream WebSocket messages, debounce 300ms, accumulate
         const liveData$ = fromEvent(socket, 'message').pipe(
         debounceTime(300),
         filter(event => event.data !== 'ping'),
         scan((acc, event) => [...acc.slice(-99), JSON.parse(event.data)], []),
         );
-        
+
         liveData$.subscribe(messages => updateDashboard(messages));
   </code></pre>
   </p>
@@ -188,24 +188,24 @@ async function loadProfile(id) {
     boilerplate:</p>
   <p>
   <pre><code>import { create } from 'zustand';
-  
+
   const useChatStore = create((set, get) => ({
   messages: [],
   connected: false,
-  
+
   // ES2025 Promise.try trong action
   connectSocket: async (url) => {
   await Promise.try(async () => {
   const ws = new WebSocket(url);
   set({ connected: true });
-  
+
   ws.onmessage = (e) => set(state => ({
   messages: [...state.messages, JSON.parse(e.data)]
   }));
   });
   },
   }));
-  
+
   // Trong component
   function ChatApp() {
   const { messages, connectSocket } = useChatStore();
@@ -213,7 +213,7 @@ async function loadProfile(id) {
   }
   </code></pre>
   </p>
-  <p><img src="/Day1/Img/hinh4.png" alt="Hình 4" width="700px" height="420px"></p>
+  <p><img src="/Day01/Img/hinh4.png" alt="Hình 4" width="700px" height="420px"></p>
   <p><em>RxJS cho stream phức tạp, Zustand cho React app state - chọn đúng tool cho đúng bài toán</em></p>
   <p>Bảng so sánh thực tế:</p>
   <table>
@@ -312,7 +312,7 @@ return Iterator.from(get().prices.entries())
 },
 }));
 </code></pre>
-  <p><img src="/Day1/Img/hinh5.png" alt="Hình 5" width="700px" height="420px"></p>
+  <p><img src="/Day01/Img/hinh5.png" alt="Hình 5" width="700px" height="420px"></p>
   <p><em>Zustand store kết hợp ES2025 Set union và Iterator Helpers - ít code hơn, dễ đọc hơn</em></p>
   <ul>
     <li>Không duplicate symbol khi user thêm subscription nhiều lần (Set.union)</li>
