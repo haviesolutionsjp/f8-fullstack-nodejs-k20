@@ -27,8 +27,9 @@
 
 ### 📫 Kết nối với mình:
 
-[![Github](https://img.shields.io/badge/github-1877F2?style=for-the-badge&logo=github&logoColor=white)](https://github.com/haviesolutionsjp)])
+[![Github](https://img.shields.io/badge/github-1877F2?style=for-the-badge&logo=github&logoColor=white)](https://github.com/haviesolutionsjp)
 [![Email](https://img.shields.io/badge/Email-D14836?style=for-the-badge&logo=gmail&logoColor=white)](mailto:job@haviet.net)
+[![Website](https://img.shields.io/badge/website-D14836?style=for-the-badge&logo=website&logoColor=white)](www.haviet.net)
 
 ---
 
