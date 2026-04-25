@@ -1,0 +1,220 @@
+<!doctype html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Các hình có thể tạo được với Border</title>
+    <style>
+      tr,
+      td {
+        vertical-align: bottom;
+      }
+      .hinhVuong {
+        width: 90px;
+        height: 90px;
+        border-width: 3px;
+        border-style: solid;
+        border-color: #d45a43;
+      }
+      .hinhChuNhat {
+        width: 130px;
+        height: 70px;
+        border-width: 3px;
+        border-style: solid;
+        border-color: #6e9ae2;
+      }
+      .tamGiacLen {
+        width: 0;
+        height: 0;
+        border-width: 0 45px 90px 45px;
+        border-style: solid;
+        border-color: transparent transparent #6cc776 transparent;
+      }
+      .tamGiacXuong {
+        width: 0;
+        height: 0;
+        border-width: 90px 45px 0 45px;
+        border-style: solid;
+        border-color: #eea92a transparent transparent transparent;
+      }
+      .tamGiacTrai {
+        width: 0;
+        height: 0;
+        border-width: 45px 90px 45px 0;
+        border-style: solid;
+        border-color: transparent #8c5ab5 transparent transparent;
+      }
+      .tamGiacPhai {
+        width: 0;
+        height: 0;
+        border-width: 45px 0 45px 90px;
+        border-style: solid;
+        border-color: transparent transparent transparent #dd892f;
+      }
+      .hinhThang {
+        width: 90px;
+        height: 0;
+        border-width: 0 18px 70px 18px;
+        border-style: solid;
+        border-color: transparent transparent #67bca2 transparent;
+      }
+
+      .tamGiacRong {
+        width: 0;
+        height: 0;
+        border-width: 0 70px 55px 70px;
+        border-style: solid;
+        border-color: transparent transparent #43536e transparent;
+      }
+
+      .tamGiacNhon {
+        width: 0;
+        height: 0;
+        border-width: 0 25px 100px 25px;
+        border-style: solid;
+        border-color: transparent transparent #b84931 transparent;
+      }
+
+      .tamGiacCan {
+        width: 0;
+        height: 0;
+        border-width: 0 45px 65px 45px;
+        border-style: solid;
+        border-color: transparent transparent #c76619 transparent;
+      }
+
+      .muiTenPhai {
+        width: 0;
+        height: 0;
+        border-width: 35px 0 35px 70px;
+        border-style: solid;
+        border-color: transparent transparent transparent #57a58c;
+      }
+
+      .muiTenTrai {
+        width: 0;
+        height: 0;
+        border-width: 35px 70px 35px 0;
+        border-style: solid;
+        border-color: transparent #824bb5 transparent transparent;
+      }
+
+      .ribbon {
+        width: 90px;
+        height: 0;
+        border-width: 35px 35px 35px 0;
+        border-style: solid;
+        border-color: #d4583f transparent #d4583f #d4583f;
+      }
+
+      .chu-f {
+        width: 60px;
+        height: 130px;
+        border-width: 30px 0 0 30px;
+        border-style: solid;
+        border-color: #d4583f transparent transparent #d4583f;
+        padding: 20px 0 0 0;
+        margin: 0 30px 0 0;
+        display: inline-block;
+      }
+
+      .gach-f {
+        width: 60px;
+        height: 0;
+        border-width: 30px 0 0 0;
+        border-style: solid;
+        border-color: #d4583f transparent transparent transparent;
+        margin: 20px 0 0 0;
+      }
+
+      .chu-8 {
+        width: 70px;
+        height: 100px;
+        border-width: 25px;
+        border-style: solid;
+        border-color: #d4583f;
+        padding: 30px 0 0 0;
+        display: inline-block;
+      }
+
+      .gach-8 {
+        width: 70px;
+        height: 0;
+        border-width: 25px 0 0 0;
+        border-style: solid;
+        border-color: #d4583f transparent transparent transparent;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Các hình có thể tạo được với Border</h1>
+
+    <table>
+      <tr>
+        <td>
+          <div class="hinhVuong"></div>
+          <p>1. Hình vuông</p>
+        </td>
+        <td>
+          <div class="hinhChuNhat"></div>
+          <p>2. Hình chữ nhật</p>
+        </td>
+        <td>
+          <div class="tamGiacLen"></div>
+          <p>3. Tam giác lên</p>
+        </td>
+        <td>
+          <div class="tamGiacXuong"></div>
+          <p>4. Tam giác xuống</p>
+        </td>
+        <td>
+          <div class="tamGiacTrai"></div>
+          <p>5. Tam giác trái</p>
+        </td>
+        <td>
+          <div class="tamGiacPhai"></div>
+          <p>6. Tam giác phải</p>
+        </td>
+        <td>
+          <div class="hinhThang"></div>
+          <p>7. Hình thang</p>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <div class="tamGiacRong"></div>
+          <p>8. Tam giác rộng</p>
+        </td>
+        <td>
+          <div class="tamGiacNhon"></div>
+          <p>9. Tam giác nhọn</p>
+        </td>
+        <td>
+          <div class="tamGiacCan"></div>
+          <p>10. Tam giác cân</p>
+        </td>
+        <td>
+          <div class="muiTenPhai"></div>
+          <p>11. Mũi tên phải</p>
+        </td>
+        <td>
+          <div class="muiTenTrai"></div>
+          <p>12. Mũi tên trái</p>
+        </td>
+        <td>
+          <div class="ribbon"></div>
+          <p>13. Ribbon/Lá cờ</p>
+        </td>
+      </tr>
+    </table>
+
+    <div>
+      <div class="chu-f">
+        <div class="gach-f"></div>
+      </div>
+      <div class="chu-8">
+        <div class="gach-8"></div>
+      </div>
+      <p>14. F8</p>
+    </div>
+  </body>
+</html>
